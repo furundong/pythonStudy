@@ -1,5 +1,15 @@
-from collections import Iterable
+# from collections import Iterable
 import os
+
+
+def fib(max2):
+    n, a, b = 0, 0, 1
+    while n < max2:
+        yield b
+        a, b = b, a + b
+        n = n + 1
+    return 'done'
+
 
 if __name__ == '__main__':
     print(list(range(1, 11)))
@@ -27,8 +37,36 @@ if __name__ == '__main__':
     print([k + '=' + v for k, v in d.items()])
 
     #  这里的%运算速度慢，可以采用按位与 & 运算题高速度
-    print([x * x for x in list(range(1, 11)) if x & 1 == 0 ])
+    print([x * x for x in list(range(1, 11)) if x & 1 == 0])
 
     #  这里的if是for的筛选条件，不能使用else，
     #    print([x * x for x in list(range(1, 11)) if x & 1 == 0 else x])
 
+    # 这里的if跟else是条件，缺一不可
+    print([x * x if x & 1 == 0 else 'odd' for x in list(range(1, 11))])
+
+    # print([x * x if x & 1 == 0 for x in list(range(1, 11))])
+
+    # =====================================================================================
+    # 第一种方法很简单，只要把一个列表生成式的[]改成()，就创建了一个generator：
+    print([x if x != 0 else 'is zero' for x in range(0, 11)])
+    g = (x if x != 0 else 'is zero' for x in range(0, 11))
+    print()
+    # next(g)  打印出不来
+    print(g)
+    for x in g:
+        print(x, end=' ')
+
+    print()
+    print()
+    generator = fib(4)
+    for x in generator:
+        print(x)
+
+    while True:
+        try:
+            x = next(generator)
+            print('x:', x)
+        except StopIteration as e:
+            print(e.value)
+            break

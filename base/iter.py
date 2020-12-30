@@ -23,3 +23,17 @@ def iteration():
 
 if __name__ == '__main__':
     iteration()
+    # 定义一个list
+    classmates = ['Michael', 'Bob', 'Tracy', 'Tracy']
+    print(classmates)
+    print(len(classmates))
+
+    # 定义一个tuple
+    t = (1, 2)
+    t1 = (1,)
+    # t[2] = 2
+    print(t)
+
+    # 在set中，没有重复的key。
+    s = set(classmates)
+    print(s)
