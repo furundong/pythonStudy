@@ -37,3 +37,8 @@ if __name__ == '__main__':
     # 在set中，没有重复的key。
     s = set(classmates)
     print(s)
+
+    d = {'a': 1, 'b': 2, 'c': 3}
+
+    # 字符串也是iterable，
+    # 只要是能for循环遍历的都是iterable，
